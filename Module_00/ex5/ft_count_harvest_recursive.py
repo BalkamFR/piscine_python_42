@@ -1,4 +1,4 @@
-def ft_count_harvest_recursive(n):
+def ft_count_harvest_recursive(n) -> int:
 	if n > 0:
 		nbr = ft_count_harvest_recursive(n - 1)
 		print(f"Day {nbr}")
