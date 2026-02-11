@@ -1,21 +1,17 @@
 class Garden_Data_Organizer:
 
-	def __init__(self, name_plant:str, height_plant:float, age_plant:int):
+	def __init__(self, name_plant:str, height_plant:int, age_plant:int):
 		self.name_plant:str = name_plant
-		self.height_plant:float = height_plant + 0.0
+		self.height_plant:int = height_plant + 0.0
 		self.age_plant:int = age_plant
 		self.day_plant:int = 1
 
 	def age(self)->None:
 		self.age_plant += 1
-		self.height_plant += 1
 		self.day_plant += 1
 
 	def grow(self)->None:
-		if(self.height_plant % 1 != 0):
-			self.age_plant += 1
-			self.day_plant += 1
-		self.height_plant += 0.5
+		self.height_plant += 1
 
 	def get_info(self):
 		return (f"{self.name_plant}: {self.height_plant}cm, {self.age_plant} days old")
@@ -32,6 +28,7 @@ class Garden_Data_Organizer:
 		i = 0
 		while(i < age_more):
 			self.age()
+			self.grow()
 			i+=1
 		self.print_days()
 		self.print_data_plant()
