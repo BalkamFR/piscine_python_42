@@ -5,4 +5,3 @@ if __name__ == '__main__':
     print("=== Welcome to My Garder ===")
     print("Plant: ", name, "\nHeight:", height, "cm", "\nAge: ", age, "days\n")
     print("=== End of Program ===")
-
