@@ -1,8 +1,8 @@
-class Garden_Data_Organizer:
+class Plant:
 
     def __init__(self, name_plant: str, height_plant: int, age_plant: int):
         self.name_plant: str = name_plant
-        self.height_plant: int = height_plant + 0.0
+        self.height_plant: int = height_plant
         self.age_plant: int = age_plant
         self.day_plant: int = 1
 
@@ -38,5 +38,5 @@ class Garden_Data_Organizer:
 
 
 if __name__ == '__main__':
-    rose = Garden_Data_Organizer("rose", 25, 30)
+    rose = Plant("rose", 25, 30)
     rose.simulator_age(6)

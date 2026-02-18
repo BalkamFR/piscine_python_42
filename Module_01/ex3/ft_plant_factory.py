@@ -1,4 +1,4 @@
-class Garden_Data_Organizer:
+class Plant:
 
     def __init__(
             self,
@@ -6,7 +6,7 @@ class Garden_Data_Organizer:
             starting_height_plant: int,
             starting_age_plant: int):
         self.name_plant: str = name_plant
-        self.starting_height_plant: int = starting_height_plant + 0.0
+        self.starting_height_plant: int = starting_height_plant
         self.starting_age_plant: int = starting_age_plant
         self.day_plant: int = 1
 
@@ -31,7 +31,7 @@ def add_plant_tab_plants(
         name_plant_add: str,
         height_plant_add: int,
         age_plant_add):
-    plant = Garden_Data_Organizer(
+    plant = Plant(
         name_plant_add, height_plant_add, age_plant_add)
     print(f"Created: {name_plant_add} ({height_plant_add}cm, {age_plant_add},"
           "days)")
@@ -50,6 +50,17 @@ def print_all_plants(all_plants: list):
 if __name__ == '__main__':
     all_plants: list = []
     print("=== Plant Factory Output ===")
+    plants_list = [
+        ["Rose", 25, 30],
+        ["Oak", 200, 365]
+    ]
+    plant_obj_list = []
+    for data in plants_list:
+        plant_obj_list.append(Plant(*data))
+        
+    for plant in plant_obj_list:
+        plant.print_data_plant()
+
     add_plant_tab_plants(all_plants, "Rose", 25, 30)
     add_plant_tab_plants(all_plants, "Oak", 200, 365)
     add_plant_tab_plants(all_plants, "Cactus", 5, 90)
