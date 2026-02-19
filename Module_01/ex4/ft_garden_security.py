@@ -5,7 +5,7 @@ class Plant:
             self,
             name_plant: str,
             starting_height_plant: int,
-            starting_age_plant: int):
+            starting_age_plant: int) -> None:
         """
         Initialise et vérifie les paramètres de la plante.
         name_plant (str): Identifiant de la plante.
@@ -53,20 +53,20 @@ class Plant:
             print(f"Age updated: {age_update} days [OK]")
             return (0)
 
-    def get_height(self):
+    def get_height(self) -> None:
         """Récupère la valeur de la taille actuelle."""
         return (self.starting_height_plant)
 
-    def get_age(self):
+    def get_age(self) -> None:
         """Récupère la valeur de l'âge actuel."""
         return (self.starting_age_plant)
 
-    def get_info(self):
+    def get_info(self) -> None:
         """Formate les données actuelles de plante en chaîne de caractères."""
         return (f"Current plant: {self.__name_plant} ({self.get_height()}cm, "
                 f"{self.get_age()} days)")
 
-    def print_data_plant(self):
+    def print_data_plant(self) -> None:
         if (self.starting_height_plant <
                 0 or self.starting_age_plant < 0):
             print("Plant is not define")
@@ -77,7 +77,7 @@ class Plant:
 
 if __name__ == '__main__':
     print("=== Garden Security System ===")
-    rose = Plant("Rose", 25, 30)
+    rose: Plant = Plant("Rose", 25, 30)
     print("")
     rose.set_height(-5)
     print("")

@@ -1,7 +1,11 @@
 class Plant:
     """Gère la croissance et le suivi d'une plante."""
 
-    def __init__(self, name_plant: str, height_plant: int, age_plant: int):
+    def __init__(
+            self,
+            name_plant: str,
+            height_plant: int,
+            age_plant: int) -> None:
         """
         Initialise les attributs de la plante.
         name_plant (str): Nom de l'espèce.
@@ -23,19 +27,19 @@ class Plant:
         """Augmente la taille de la plante de 1cm."""
         self.height_plant += 1
 
-    def get_info(self):
+    def get_info(self) -> str:
         """Retourne les informations formatées de la plante."""
         return (f"{self.name_plant}: {self.height_plant}cm, {self.age_plant} "
                 "days old")
 
-    def print_days(self):
+    def print_days(self) -> None:
         print(f"=== Day {self.day_plant} ===")
 
-    def print_data_plant(self):
+    def print_data_plant(self) -> None:
         print(f"{self.name_plant}: {self.height_plant}cm, {self.age_plant} "
               "days old")
 
-    def simulator_age(self, age_more: int):
+    def simulator_age(self, age_more: int) -> None:
         """
         Simule la croissance sur une période donnée.
         age_more (int): Nombre de jours à simuler.
@@ -53,5 +57,5 @@ class Plant:
 
 
 if __name__ == '__main__':
-    rose = Plant("rose", 25, 30)
+    rose: Plant = Plant("rose", 25, 30)
     rose.simulator_age(6)

@@ -5,7 +5,7 @@ class Plant:
             self,
             name_plant: str,
             starting_height_plant: int,
-            starting_age_plant: int):
+            starting_age_plant: int) -> None:
         """
         Initialise une nouvelle instance de plante.
         name_plant (str): Nom de l'espèce.
@@ -31,19 +31,19 @@ class Plant:
         """Augmente la taille de la plante de 1cm."""
         self.starting_height_plant += 1
 
-    def get_info(self):
+    def get_info(self) -> str:
         """Retourne les informations de la plante sous forme de texte."""
         return (f"{self.name_plant}: {self.starting_height_plant}cm,"
                 f"{self.starting_age_plant} days old")
 
-    def print_data_plant(self):
+    def print_data_plant(self) -> str:
         print(f"{self.name_plant}: {self.starting_height_plant}cm, "
               f"{self.starting_age_plant} days old")
 
 
 if __name__ == '__main__':
     print("=== Plant Factory Output ===")
-    plants_list = [
+    plants_list: list = [
         ["Rose", 25, 30],
         ["Oak", 200, 365],
         ["Cactus", 5, 90],
@@ -51,7 +51,7 @@ if __name__ == '__main__':
         ["Fern", 15, 120]
     ]
 
-    plant_obj_list = []
+    plant_obj_list: list = []
     for data in plants_list:
         plant_obj_list.append(Plant(*data))
 

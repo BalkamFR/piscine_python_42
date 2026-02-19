@@ -6,7 +6,7 @@ age (int): Âge en jours.
 """
 
 if __name__ == '__main__':
-    name = "Rose"
+    name: str = "Rose"
     height: int = 25
     age: int = 30
 

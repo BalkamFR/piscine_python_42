@@ -4,7 +4,7 @@ class Plant:
     def __init__(
             self,
             name_plant: str,
-            starting_height_plant: int):
+            starting_height_plant: int) -> None:
         """
         Initialise la plante et valide sa création.
         name_plant (str): Identifiant de la plante.
@@ -14,11 +14,11 @@ class Plant:
         self.__nbr_type_plant: int = + 1
         res = self.set_height(starting_height_plant)
         if (res == 0):
-            self.__plant_create = 1
+            self.__plant_create: int = 1
         else:
-            self.__plant_create = 0
+            self.__plant_create: int = 0
 
-    def get_plant_create(self):
+    def get_plant_create(self) -> int:
         """Indique si la plante a été créée avec succès."""
         return (self.__plant_create)
 
@@ -28,21 +28,21 @@ class Plant:
         height_update (int): Valeur de la taille à appliquer.
         """
         if (height_update < 0):
-            self.__starting_height_plant = -1
+            self.__starting_height_plant: int = -1
             print(
                 f"Invalid operation ({self.__name_plant})"
                 f"attempted: height {height_update}cm")
             print("Security: Negative height [REJECTED]")
             return (1)
         else:
-            self.__starting_height_plant = height_update
+            self.__starting_height_plant: int = height_update
             return (0)
 
     def get_height(self) -> int:
         """Récupère la taille actuelle de la plante."""
         return (self.__starting_height_plant)
 
-    def grow_plant(self, size_grow: int):
+    def grow_plant(self, size_grow: int) -> None:
         """
         Augmente la taille de la plante.
         size_grow (int): Valeur de croissance ajoutée.
@@ -56,7 +56,7 @@ class Plant:
     def print_data_plant(self) -> None:
         print(f" - {self.get_name()}: {self.__starting_height_plant}cm")
 
-    def get_type_and_nbr_plant(self):
+    def get_type_and_nbr_plant(self) -> str:
         """Retourne la classification de la plante."""
         return (f"{self.__nbr_type_plant} regular")
 
@@ -69,7 +69,7 @@ class FloweringPlant(Plant):
             name_plant: str,
             starting_height_plant: int,
             color_plant: str,
-            blooming_plant: str):
+            blooming_plant: str) -> None:
         """
         Initialise une plante à fleurs.
         name_plant (str): Nom de la plante.
@@ -78,8 +78,8 @@ class FloweringPlant(Plant):
         blooming_plant (str): État de floraison.
         """
         super().__init__(name_plant, starting_height_plant)
-        self.__color_plant = color_plant
-        self.__blooming_plant = blooming_plant
+        self.__color_plant: str = color_plant
+        self.__blooming_plant: str = blooming_plant
         self.__nbr_type_plant: int = + 1
 
     def get_color_plant(self) -> str:
@@ -90,17 +90,17 @@ class FloweringPlant(Plant):
         """Récupère l'état de floraison."""
         return (self.__blooming_plant)
 
-    def print_data_plant(self) -> str:
+    def print_data_plant(self) -> None:
         print(f" - {self.get_name()}: {self.get_height()}cm "
               f"{self.get_color_plant()} ({self.get_blooming_plant()})")
 
-    def get_type_and_nbr_plant(self):
+    def get_type_and_nbr_plant(self) -> str:
         """Retourne la classification comme plante à fleurs."""
         return (f"{self.__nbr_type_plant} flowering")
 
 
 class PrizeFlower(FloweringPlant):
-    """Plante de compétition possédant un score de prix."""
+    """Plante possédant un score de prix."""
 
     def __init__(
             self,
@@ -108,7 +108,7 @@ class PrizeFlower(FloweringPlant):
             starting_height_plant: int,
             color_plant: str,
             blooming_plant: str,
-            prize_plant: int):
+            prize_plant: int) -> None:
         """
         Initialise une fleur de prix.
         name_plant (str): Nom de la plante.
@@ -123,19 +123,19 @@ class PrizeFlower(FloweringPlant):
             color_plant,
             blooming_plant)
         if prize_plant < 0:
-            self.__prize_plant = 0
+            self.__prize_plant: int = 0
         else:
-            self.__prize_plant = prize_plant
+            self.__prize_plant: int = prize_plant
         self.__nbr_type_plant: int = + 1
 
-    def print_data_plant(self) -> str:
+    def print_data_plant(self) -> None:
         print(f" - {self.get_name()}: {self.get_height()}cm "
               f"{self.get_color_plant()} flowers "
               f"({self.get_blooming_plant()}),  "
               f"Prize points: {self.__prize_plant}")
 
-    def get_type_and_nbr_plant(self):
-        """Retourne la classification comme fleur de prix."""
+    def get_type_and_nbr_plant(self) -> str:
+        """Retourne la classification ."""
         return (f"{self.__nbr_type_plant} prize flowers")
 
 
@@ -143,21 +143,20 @@ class GardenManager:
     """Gestionnaire principal des jardins et de leur population."""
     all_plant_bad: list = []
 
-    def __init__(self, name_garden_add: str):
+    def __init__(self, name_garden_add: str) -> None:
         """
         Initialise un nouveau jardin.
         name_garden_add (str): Nom du jardin.
         """
-        self.name_garden = name_garden_add
-        self.__score_garden = 0
-        self.all_plants = []
-        self.total_grow = 0
+        self.name_garden: str = name_garden_add
+        self.__score_garden: int = 0
+        self.all_plants: list = []
+        self.total_grow: int = 0
         self.GardenStats.all_garden.append(self)
 
-    def add_plants_garden(self, name_plant: list):
+    def add_plants_garden(self, name_plant: list) -> None:
         """
         Ajoute une plante au jardin après vérification.
-        name_plant (Plant): Objet plante à intégrer.
         """
         if name_plant.get_plant_create() == 1:
             self.all_plants.append(name_plant)
@@ -168,7 +167,7 @@ class GardenManager:
             print(
                 f"Added {name_plant.get_name()} to {self.name_garden} garden")
 
-    def grow_all_plant(self, size_grow: int):
+    def grow_all_plant(self, size_grow: int) -> None:
         """
         Applique une croissance uniforme à toutes les plantes.
         size_grow (int): Valeur de croissance en cm.
@@ -179,19 +178,19 @@ class GardenManager:
             self.total_grow = size_grow + self.total_grow
             plant.grow_plant(size_grow)
 
-    def getname(self):
+    def getname(self) -> str:
         """Récupère le nom du responsable ou du jardin."""
         return (self.name_garden)
 
-    def getscore(self):
+    def getscore(self) -> int:
         """Récupère le score de gestion du jardin."""
         return (self.__score_garden)
 
-    def getnamegarden(self):
+    def getnamegarden(self) -> str:
         """Récupère le nom du jardin."""
         return (self.name_garden)
 
-    def print_all(self):
+    def print_all(self) -> None:
         print()
         print(f"=== {self.name_garden} Garden Report ===")
         print("Plants in garden:")
@@ -201,7 +200,7 @@ class GardenManager:
         print("\n")
 
     @classmethod
-    def validation_test(cls):
+    def validation_test(cls) -> None:
         """Vérifie si des erreurs de validation de taille ont eu lieu."""
         if len(cls.all_plant_bad) == 0:
             print("Height validation test: True")
@@ -209,18 +208,18 @@ class GardenManager:
             print("Height validation test: False")
 
     @staticmethod
-    def print_text_demo():
+    def print_text_demo() -> None:
         print("\n=== Garden Management System Demo ===\n")
 
     class GardenStats:
         """Classe interne pour le calcul et l'affichage des statistiques."""
         all_garden: list = []
 
-        def print_all_plants(self):
+        def print_all_plants(self) -> None:
             for plant in self.all_plants:
                 plant.print_data_plant()
 
-        def print_stats(self):
+        def print_stats(self) -> None:
             print(
                 f"Plants added: {len(self.all_plants)}, "
                 f"Total growth: {self.total_grow}cm")
@@ -228,7 +227,7 @@ class GardenManager:
             for plant in self.all_plants:
                 print(plant.get_type_and_nbr_plant(), end=', ')
 
-        def print_report(self):
+        def print_report(self) -> None:
             print()
             print(f"=== {self.name_garden} Garden Report ===")
             print("Plants in garden:")
@@ -238,24 +237,25 @@ class GardenManager:
             print("\n")
 
         @classmethod
-        def garden_scores(cls):
+        def garden_scores(cls) -> None:
             print("Garden scores - ", end='')
             for user in cls.all_garden:
                 print(f"{user.getname()}: {user.getscore()}", end=', ')
             print()
 
         @classmethod
-        def total_gardens(cls):
+        def total_gardens(cls) -> None:
             print(f"Total gardens managed: {len(cls.all_garden)}")
 
 
 if __name__ == '__main__':
-    oak = Plant("Oak tree", 100)
-    rose = FloweringPlant("Rose", 25, "red", "blooming")
-    Sunflower = PrizeFlower("Sunflower", 50, "yellow", "blooming", 10)
+    oak: Plant = Plant("Oak tree", 100)
+    rose: FloweringPlant = FloweringPlant("Rose", 25, "red", "blooming")
+    Sunflower: PrizeFlower = PrizeFlower(
+        "Sunflower", 50, "yellow", "blooming", 10)
     GardenManager.print_text_demo()
-    alice = GardenManager("Alice")
-    bob = GardenManager("bob")
+    alice: GardenManager = GardenManager("Alice")
+    bob: GardenManager = GardenManager("bob")
     alice.add_plants_garden(oak)
     alice.add_plants_garden(rose)
     alice.add_plants_garden(Sunflower)

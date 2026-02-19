@@ -5,7 +5,7 @@ class Plant:
             self,
             name_plant: str,
             starting_height_plant: int,
-            starting_age_plant: int):
+            starting_age_plant: int) -> None:
         """
         Initialise et valide les données de base.
         name_plant (str): Nom de l'espèce.
@@ -27,13 +27,13 @@ class Plant:
         height_update (int): Nouvelle taille en cm.
         """
         if (height_update < 0):
-            self.__starting_height_plant = -1
+            self.__starting_height_plant: int = -1
             print(f"Invalid operation attempted: height {height_update}cm"
                   "[REJECTED]")
             print("Security: Negative height rejected")
             return (1)
         else:
-            self.__starting_height_plant = height_update
+            self.__starting_height_plant: int = height_update
             return (0)
 
     def set_age(self, age_update: int) -> int:
@@ -42,13 +42,13 @@ class Plant:
         age_update (int): Nouvel âge en jours.
         """
         if (age_update < 0):
-            self.__starting_age_plant = -1
+            self.__starting_age_plant: int = -1
             print(
                 f"Invalid operation attempted: age {age_update}cm [REJECTED]")
             print("Security: Negative age rejected")
             return (1)
         else:
-            self.__starting_age_plant = age_update
+            self.__starting_age_plant: int = age_update
             return (0)
 
     def get_height(self) -> int:
@@ -88,16 +88,16 @@ class Flower(Plant):
         """
         super().__init__(name_plant, starting_height_plant, starting_age_plant)
         self.bloom("beautifully")
-        self.__color = color_plant
+        self.__color: str = color_plant
 
     def bloom(self, bloom_flower: str) -> None:
         """
         Définit l'état de floraison.
         bloom_flower (str): Description de la floraison.
         """
-        self.__bloom_flower = bloom_flower
+        self.__bloom_flower: str = bloom_flower
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Retourne les détails de la fleur et sa floraison."""
         return (f"{self.get_name()} ({self.__class__.__name__}): "
                 f"{self.get_height()}cm,"
@@ -107,7 +107,7 @@ class Flower(Plant):
 
 
 class Tree(Plant):
-    """Représente un arbre avec des propriétés ligneuses."""
+    """Représente un arbre avec des propriétés."""
 
     def __init__(
             self,
@@ -131,7 +131,7 @@ class Tree(Plant):
         """
         self.__produce_shade: int = "%.0f" % shade_tree
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Retourne les détails de l'arbre et son ombrage."""
         return (
             f"{self.get_name()} ({self.__class__.__name__}): "
@@ -164,7 +164,7 @@ class Vegetable(Plant):
         self.__harvest_season: str = harves_plant
         self.__nutritional_value: str = nutritional_plant
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Retourne les détails du légume et ses nutriments."""
         return (f"{self.get_name()} ({self.__class__.__name__}): "
                 f"{self.get_height()}cm,"
@@ -175,9 +175,9 @@ class Vegetable(Plant):
 
 if __name__ == '__main__':
     print("=== Garden Plant Types ===")
-    Rose = Flower("Rose", 25, 30, "red")
-    Tomato = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
-    Oak = Tree("Oak", 500, 1825)
+    Rose: Flower = Flower("Rose", 25, 30, "red")
+    Tomato: Vegetable = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
+    Oak: Tree = Tree("Oak", 500, 1825)
     print("")
     print(Rose)
     print("")

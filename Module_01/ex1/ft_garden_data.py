@@ -8,20 +8,20 @@ class Plant:
         Height (int): Taille en centimètres.
         Age (int): Âge en jours.
         """
-        self.Name = Name
-        self.Height = Height
-        self.Age = Age
+        self.Name: str = Name
+        self.Height: int = Height
+        self.Age: int = Age
 
     def print_data(self) -> None:
         print(f"{self.Name}: {self.Height}cm, {self.Age} days old")
 
 
 if __name__ == '__main__':
-    Rose = Plant("Rose", 25, 30)
-    Sunflower = Plant("Sunflower", 80, 45)
-    Cactus = Plant("Cactus", 15, 120)
+    Rose: Plant = Plant("Rose", 25, 30)
+    Sunflower: Plant = Plant("Sunflower", 80, 45)
+    Cactus: Plant = Plant("Cactus", 15, 120)
 
-    list_all_plant = [Rose, Sunflower, Cactus]
+    list_all_plant: list = [Rose, Sunflower, Cactus]
 
     print("=== Garden Plant Registry ===")
     for plant in list_all_plant:
