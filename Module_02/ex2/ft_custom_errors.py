@@ -14,14 +14,14 @@ class WaterError(GardenError):
 def verif_plant_age(age: int, name_plant: str):
     if (age >= 15):
         raise PlantError(f"Caught PlantError: The "
-                         "{name_plant} plant is wilting!")
+                         f"{name_plant} plant is wilting!")
     else:
         print("Plant is good")
 
 
 def verif_plant_water(water: bool, name_plant: str):
     if water == 1:
-        raise WaterError(f"Caught WaterError: Not enough water in the tank!")
+        raise WaterError("Caught WaterError: Not enough water in the tank!")
     else:
         print("Water is good")
 

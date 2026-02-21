@@ -1,12 +1,12 @@
 def garden_operations(value_select: str) -> None:
     if value_select == "ValueError":
         try:
-            a = int("abc")
+            int("abc")
         except BaseException:
             print("Caught ValueError: invalid literal for int()")
     if value_select == "ZeroDivisionError":
         try:
-            a = 0 % 0
+            0 % 0
         except BaseException:
             print("Caught ZeroDivisionError: division by zero")
     if value_select == "FileNotFoundError":
