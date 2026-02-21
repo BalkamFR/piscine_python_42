@@ -1,9 +1,3 @@
-"""
-Script de bienvenue pour la gestion d'une plante individuelle.
-name (str): Nom de la plante.
-height (int): Taille en centimètres.
-age (int): Âge en jours.
-"""
 
 if __name__ == '__main__':
     name: str = "Rose"
