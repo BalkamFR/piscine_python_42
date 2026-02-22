@@ -1,46 +1,46 @@
 class GardenError(Exception):
 
     @staticmethod
-    def plant_valid_name(plant: str):
+    def plant_valid_name(plant: str | None) -> None:
         if type(plant) is not str:
             raise GardenError("Error: Plant name cannot be empty!")
         else:
             print(f"Added {plant} successfully")
 
     @staticmethod
-    def plant_valid_water(water: int):
+    def plant_valid_water(water: int) -> None:
         if water > 10:
             raise GardenError(f"Water level {water} is too high (max 10)")
 
     @staticmethod
-    def plant_valid_sunlight(hours: int):
+    def plant_valid_sunlight(hours: int) -> None:
         if hours < 2:
             raise GardenError(f"Sunlight hours {hours} is too low (min 2)")
 
     @staticmethod
-    def check_min_water(water: int):
+    def check_min_water(water: int) -> None:
         if water < 10:
             raise GardenError("Not enough water in tank")
 
 
 class GardenManager():
-    def __init__(self, name: str):
+    def __init__(self, name: str | None) -> None:
         try:
             GardenError.plant_valid_name(name)
-            self.name_plant: str = name
+            self.name_plant: str | None = name
             self.watter: int = 0
             self.sun: int = 0
         except GardenError as e:
             print(e)
 
-    def sun_plant(self, level_sun: int):
+    def sun_plant(self, level_sun: int) -> None:
         self.sun = + level_sun
 
-    def watter_plant(self, level: int):
+    def watter_plant(self, level: int) -> None:
         print(f"Watering {self.name_plant} - success")
         self.watter = + level
 
-    def check_plant_good(self):
+    def check_plant_good(self) -> None:
         try:
             GardenError.plant_valid_water(self.watter)
             GardenError.plant_valid_sunlight(self.sun)
@@ -50,7 +50,7 @@ class GardenManager():
         except GardenError as e:
             print(f"Error checking lettuce: {e}")
 
-    def check_watter_min_good(self):
+    def check_watter_min_good(self) -> None:
         try:
             GardenError.check_min_water(self.watter)
             print("Watter is good")
@@ -58,10 +58,11 @@ class GardenManager():
             print(f"Caught GardenError: {e}")
 
 
-def test_garden_management():
+def test_garden_management() -> None:
     tomato = GardenManager("tomato")
     lettus = GardenManager("lettus")
-    GardenManager(None)
+    bad_value = None
+    GardenManager(bad_value)
     print("\nWatering plants...")
     print("Opening watering system")
     tomato.watter_plant(5)

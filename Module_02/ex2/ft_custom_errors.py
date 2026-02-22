@@ -4,43 +4,41 @@ class GardenError(Exception):
 
 
 class PlantError(GardenError):
-    pass
+    @staticmethod
+    def verif_plant_age(age: int, name_plant: str) -> None:
+        if (age >= 15):
+            raise PlantError(f"Caught PlantError: The "
+                            f"{name_plant} plant is wilting!")
+        else:
+            print("Plant is good")
+
 
 
 class WaterError(GardenError):
-    pass
-
-
-def verif_plant_age(age: int, name_plant: str):
-    if (age >= 15):
-        raise PlantError(f"Caught PlantError: The "
-                         f"{name_plant} plant is wilting!")
-    else:
-        print("Plant is good")
-
-
-def verif_plant_water(water: bool, name_plant: str):
+   @staticmethod
+   def verif_plant_water(water: int, name_plant: str) -> None:
     if water == 1:
         raise WaterError("Caught WaterError: Not enough water in the tank!")
     else:
         print("Water is good")
 
 
-def testing_planterror():
+def testing_planterror() -> None:
     try:
-        verif_plant_age(16, "tomato")
+        PlantError.verif_plant_age(16, "tomato")
     except PlantError as e:
         print(e)
 
 
-def testing_watererror():
+
+def testing_watererror() -> None:
     try:
-        verif_plant_water(1, "tomato")
+        WaterError.verif_plant_water(1, "tomato")
     except WaterError as e:
         print(e)
 
 
-def catching_all():
+def catching_all() -> None:
     testing_planterror()
     testing_watererror()
 
@@ -55,5 +53,5 @@ def test_error_types() -> None:
     catching_all()
     print("\nAll custom error types work correctly!")
 
-
-test_error_types()
+if __name__ == '__main__':
+    test_error_types()

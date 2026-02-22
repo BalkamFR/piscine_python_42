@@ -1,4 +1,4 @@
-def check_temperature(temp_str) -> None:
+def check_temperature(temp_str: int | str) -> None:
     print()
     print(f"Testing temperature: {temp_str}")
     try:
@@ -21,3 +21,7 @@ def test_temperature_input() -> None:
     check_temperature(100)
     check_temperature(-50)
     print("\nAll tests completed - program didn't crash!")
+
+
+if __name__ == '__main__':
+    test_temperature_input()

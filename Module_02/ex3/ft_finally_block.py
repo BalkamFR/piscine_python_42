@@ -1,11 +1,11 @@
-def plant_valid(plant: str):
+def plant_valid(plant: str) -> None:
     if type(plant) is not str:
         raise ValueError(f"Error: Cannot water {plant} - invalid plant!")
     else:
         print(f"Watering {plant}")
 
 
-def water_plants(plant_list):
+def water_plants(plant_list) -> None:
     print("watering system")
     print("Opening watering system")
     try:
@@ -17,7 +17,7 @@ def water_plants(plant_list):
         print("Closing watering system (cleanup)")
 
 
-def testing_error():
+def testing_error() -> None:
     print("=== Garden Watering System ===\n")
     print("Testing normal watering...")
     water_plants(["tomato", "lettuce", "carrots"])
