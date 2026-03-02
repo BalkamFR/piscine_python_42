@@ -90,7 +90,7 @@ class Tree(Plant):
         self.produce_shade(self.__trunk_diameter * 1.55)
 
     def produce_shade(self, shade_tree: float) -> None:
-        self.__produce_shade: str = '%.0f' % shade_tree
+        self.__produce_shade: str = 'p' % shade_tree
 
     def __repr__(self) -> str:
         return (
