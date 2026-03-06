@@ -1,4 +1,3 @@
-from typing import List
 
 
 class PlayersAnalytics:
@@ -40,18 +39,18 @@ class PlayersAnalytics:
     def list_comprehension(cls) -> None:
         print("=== List Comprehension Examples ===")
 
-        high_scorers: List[str] = [
+        high_scorers: list[str] = [
             players.get_name()
             for players in cls.all_players_list
             if players.get_score() >= 2000
         ]
 
-        scores_doubled: List[int] = [
+        scores_doubled: list[int] = [
             players.get_score() * 2
             for players in cls.all_players_list
         ]
 
-        active_player: List[str] = [
+        active_player: list[str] = [
             players.get_name()
             for players in cls.all_players_list
             if players.get_active()
@@ -152,7 +151,7 @@ class PlayersAnalytics:
 
         top_players: PlayersAnalytics
 
-        scores: List[int] = [
+        scores: list[int] = [
             players.get_score()
             for players in cls.all_players_list
         ]

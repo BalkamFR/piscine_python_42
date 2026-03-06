@@ -1,10 +1,9 @@
 import sys
-from typing import Any
 
 
 class Inventory:
     def __init__(self) -> None:
-        self.all_items: dict[str, Any] = convert_tab_to_dict()
+        self.all_items: dict[str, int] = convert_tab_to_dict()
 
     def __repr__(self) -> str:
         return (f"{self.all_items}")
@@ -23,7 +22,7 @@ class Inventory:
     def current_inventory(self) -> None:
         nbr_all_item = self.all_item_calc()
         value_pourcent: float = 0
-        all_items_sorted: list[Any]
+        all_items_sorted: list[tuple[str, int]]
         all_items_sorted = sorted(
             self.all_items.items(),
             key=lambda item: item[1],
@@ -45,8 +44,8 @@ class Inventory:
 
     def item_categories(self) -> None:
         print("=== Item Categories ===")
-        moderate: dict[str, Any] = {}
-        scare: dict[str, Any] = {}
+        moderate: dict[str, int] = {}
+        scare: dict[str, int] = {}
         for key, value in self.all_items.items():
             if int(value) >= 5:
                 moderate.update({key: value})
@@ -78,8 +77,8 @@ class Inventory:
             print("\nSample lookup - 'sword'in inventory: True")
 
 
-def convert_tab_to_dict() -> dict[str, Any]:
-    all_items_dict: dict[str, Any] = {}
+def convert_tab_to_dict() -> dict[str, int]:
+    all_items_dict: dict[str, int] = {}
     list_brut: list[str] = []
     n = len(sys.argv)
     i: int = 1
