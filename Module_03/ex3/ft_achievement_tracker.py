@@ -1,7 +1,7 @@
 class PlayersAchievements:
     all_players_list = set()
 
-    def __init__(self, name_user: str):
+    def __init__(self, name_user: str) -> None:
         self.name_user = name_user
         self.achievement: set = set()
         self.first_kill: bool = False
@@ -13,18 +13,18 @@ class PlayersAchievements:
     def get_name(self) -> str:
         return (self.name_user)
 
-    def add_achievement(self, achievement_add: str):
+    def add_achievement(self, achievement_add: str) -> None:
         if achievement_add == "first_kill":
             if not self.first_kill:
                 self.achievement.add(achievement_add)
-                self.first_kill = True
+                self.first_kill: bool = True
         else:
             self.achievement.add(achievement_add)
 
     def all_achi(self) -> set:
         return self.achievement
 
-    def add_multi_achievement(self, achievement_add: list):
+    def add_multi_achievement(self, achievement_add: list) -> None:
         for data in achievement_add:
             self.add_achievement(data)
 
@@ -85,6 +85,7 @@ class PlayersAchievements:
         print(f"{players_1.get_name()} unique: {difference_2_players_1}")
         print(f"{players_2.get_name()} unique: {difference_2_players_2}")
 
+
 def all_games() -> None:
     bob = PlayersAchievements("bob")
     bob.add_multi_achievement(
@@ -101,6 +102,7 @@ def all_games() -> None:
     PlayersAchievements.common_achievements()
     PlayersAchievements.rare_achievements()
     PlayersAchievements.dif_2_players(alice, bob)
+
 
 if __name__ == '__main__':
     all_games()

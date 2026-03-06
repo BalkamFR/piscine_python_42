@@ -103,9 +103,9 @@ class GameData:
 def create_games() -> None:
     print("=== Game Data Stream Processor ===")
 
-    _ = GameData("bob")
-    _ = GameData("alice")
-    _ = GameData("charlie")
+    GameData("bob")
+    GameData("alice")
+    GameData("charlie")
 
     GameData.generate_event()
 
@@ -159,7 +159,7 @@ def generator_demonstration() -> None:
             print("", end=', ')
         i += 1
 
-    i = 0
+    i: int = 0
 
     print("\nPrime numbers (first 5): ", end='')
     pri: Generator[int, None, None] = prime()

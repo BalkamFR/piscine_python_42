@@ -26,16 +26,16 @@ class CreatePlayers():
             data_return_tuple: tuple = None
         return data_return_tuple
 
-    def print_cord_players(self):
-        print(f"{self.name_players} at x={self.pos_players[0]}, y={
-              self.pos_players[1]}, z={self.pos_players[2]}")
+    def print_cord_players(self) -> None:
+        print(f"{self.name_players} at x={self.pos_players[0]}, y="
+              f"{self.pos_players[1]}, z={self.pos_players[2]}")
         print(
-            f"Coordinates:  X={
-                self.pos_players[0]}, Y={
-                self.pos_players[1]}, X={
-                self.pos_players[2]}")
+            f"Coordinates: X={self.pos_players[0]}, "
+            f"Y={self.pos_players[1]}, "
+            f"Z={self.pos_players[2]}"
+        )
 
-    def distance_between(self, pos2: tuple):
+    def distance_between(self, pos2: tuple) -> None:
         distance: float = math.sqrt((pos2[0] -
                                      self.pos_players[0])**2 +
                                     (pos2[1] -

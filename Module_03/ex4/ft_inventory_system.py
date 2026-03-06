@@ -78,7 +78,7 @@ class Inventory:
 
 
 def convert_tab_to_dict():
-    all_items_dict:dict = {}
+    all_items_dict: dict = {}
     list_brut: list = []
     n = len(sys.argv)
     i: int = 1

@@ -10,7 +10,7 @@ class PlayersAnalytics:
             region_user: str,
             score_player: int,
             active_player: bool,
-            achievement: list[str]):
+            achievement: list[str]) -> None:
         self.name_user = name_user
         self.regions_players = region_user
         self.score_player = score_player
