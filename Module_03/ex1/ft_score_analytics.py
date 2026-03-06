@@ -3,7 +3,7 @@ import sys
 
 def main() -> None:
     print("=== Player Score Analytics ===")
-    all_score_users: list = []
+    all_score_users: list[int] = []
     i: int = 1
     if (len(sys.argv) == 1):
         print("No scores provided. Usage: python3 "

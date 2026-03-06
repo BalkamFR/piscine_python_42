@@ -2,19 +2,22 @@ import math
 
 
 class CreatePlayers():
-    def __init__(self, name_players: str, pos_players: tuple) -> None:
+    def __init__(self, name_players: str, pos_players: tuple[int, ...]) \
+            -> None:
         self.name_players: str = name_players
-        self.pos_players: tuple = pos_players
+        self.pos_players: tuple[int, ...] = pos_players
         print(f"Position created: {pos_players}")
 
-    def split_arg_distance(self, brut: str, position_base: tuple) -> tuple:
+    def split_arg_distance(
+        self, brut: str, position_base: tuple[int, ...] | None
+    ) -> tuple[int, ...]:
         try:
-            pos_split: tuple = brut.split(',')
-            data_return_tuple: tuple = (
+            pos_split: list[str] = brut.split(',')
+            data_return_tuple: tuple[int, ...] = (
                 int(pos_split[0]), int(pos_split[1]), int(pos_split[2]))
             print(f"Parsing coordinates: \"{brut}\"")
             print(f"Parsing coordinates: \"{data_return_tuple}\"")
-            self.pos_players: tuple = data_return_tuple
+            self.pos_players = data_return_tuple
             self.distance_between(position_base)
         except BaseException:
             print(f"Parsing invalid coordinates: \"{brut}\"")
@@ -23,7 +26,7 @@ class CreatePlayers():
                   f"base 10: \"{brut}\"")
             print("Error details - Type: ValueError, Args:"
                   f"(\"invalid literal for int() with base 10: '{brut}'\",)")
-            data_return_tuple: tuple = None
+            data_return_tuple = ()
         return data_return_tuple
 
     def print_cord_players(self) -> None:
@@ -35,7 +38,9 @@ class CreatePlayers():
             f"Z={self.pos_players[2]}"
         )
 
-    def distance_between(self, pos2: tuple) -> None:
+    def distance_between(self, pos2: tuple[int, ...] | None) -> None:
+        if pos2 is None:
+            return
         distance: float = math.sqrt((pos2[0] -
                                      self.pos_players[0])**2 +
                                     (pos2[1] -
@@ -47,18 +52,19 @@ class CreatePlayers():
               f"{distance:.2f}")
 
 
-def create_pos(x: int, y: int, z: int) -> tuple:
+def create_pos(x: int, y: int, z: int) -> tuple[int, ...] | None:
     if isinstance(x, int) and isinstance(y, int) and isinstance(z, int):
-        position_created: tuple = (x, y, z)
+        position_created: tuple[int, ...] = (x, y, z)
         return position_created
     else:
         print(f"Parsing invalid coordinates: \"{x},{y},{z}\"")
+        return None
 
 
 def main() -> None:
     print("=== Game Coordinate System ===\n")
-    position_created: create_pos = create_pos(10, 20, 5)
-    position_base: create_pos = create_pos(0, 0, 0)
+    position_created: tuple[int, ...] | None = create_pos(10, 20, 5)
+    position_base: tuple[int, ...] | None = create_pos(0, 0, 0)
     if position_created is not None:
         Players = CreatePlayers("Players", position_created)
         Players.distance_between(position_base)

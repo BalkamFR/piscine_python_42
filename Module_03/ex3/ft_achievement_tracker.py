@@ -1,13 +1,13 @@
 class PlayersAchievements:
-    all_players_list = set()
+    all_players_list: set["PlayersAchievements"] = set()
 
     def __init__(self, name_user: str) -> None:
         self.name_user = name_user
-        self.achievement: set = set()
+        self.achievement: set[str] = set()
         self.first_kill: bool = False
         PlayersAchievements.all_players_list.add(self)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (f"Player {self.name_user} achievements: {self.achievement}")
 
     def get_name(self) -> str:
@@ -17,14 +17,14 @@ class PlayersAchievements:
         if achievement_add == "first_kill":
             if not self.first_kill:
                 self.achievement.add(achievement_add)
-                self.first_kill: bool = True
+                self.first_kill = True
         else:
             self.achievement.add(achievement_add)
 
-    def all_achi(self) -> set:
+    def all_achi(self) -> set[str]:
         return self.achievement
 
-    def add_multi_achievement(self, achievement_add: list) -> None:
+    def add_multi_achievement(self, achievement_add: list[str]) -> None:
         for data in achievement_add:
             self.add_achievement(data)
 
@@ -37,7 +37,7 @@ class PlayersAchievements:
     @classmethod
     def unique_achievements(cls) -> None:
         print("\n=== Achievement Analytics ===\n")
-        result: set = set()
+        result: set[str] = set()
         for players in cls.all_players_list:
             result = result.union(players.achievement)
         print(f"All unique achievements: {result}")
@@ -47,7 +47,7 @@ class PlayersAchievements:
     def common_achievements(cls) -> None:
         print()
         i: int = 0
-        result: set = set()
+        result: set[str] = set()
         for player in cls.all_players_list:
             if i == 0:
                 temp = player.all_achi()
@@ -59,22 +59,25 @@ class PlayersAchievements:
 
     @classmethod
     def rare_achievements(cls) -> None:
-        result_dict: dict = {}
+        result_dict: dict[str, int] = {}
         for player in cls.all_players_list:
             for achievement in player.all_achi():
                 if result_dict.get(achievement) is not None:
-                    res = result_dict.get(achievement) + 1
+                    res: int = result_dict[achievement] + 1
                     result_dict.update({achievement: res})
                 else:
                     result_dict.update({achievement: 1})
-        rare_items: set = set()
+        rare_items: set[str] = set()
         for key, val in result_dict.items():
             if val == 1:
                 rare_items.add(key)
         print(f"Rare achievements (1 player): {rare_items}\n")
 
     @staticmethod
-    def dif_2_players(players_1: tuple, players_2: tuple) -> None:
+    def dif_2_players(
+        players_1: "PlayersAchievements",
+        players_2: "PlayersAchievements"
+    ) -> None:
         difference_2_players_1 = players_1.all_achi(
         ).difference(players_2.all_achi())
         difference_2_players_2 = players_2.all_achi(
@@ -89,14 +92,14 @@ class PlayersAchievements:
 def all_games() -> None:
     bob = PlayersAchievements("bob")
     bob.add_multi_achievement(
-        {"first_kill", "level_10", "boss_slayer", "collector"})
+        list({"first_kill", "level_10", "boss_slayer", "collector"}))
     charlie = PlayersAchievements("charlie")
-    charlie.add_multi_achievement({"level_10", "treasure_hunter",
-                                   "boss_slayer", "speed_demon",
-                                   "perfectionist"})
+    charlie.add_multi_achievement(list({"level_10", "treasure_hunter",
+                                        "boss_slayer", "speed_demon",
+                                        "perfectionist"}))
     alice = PlayersAchievements("alice")
     alice.add_multi_achievement(
-        {"first_kill", "level_10", "treasure_hunter", "speed_demon"})
+        list({"first_kill", "level_10", "treasure_hunter", "speed_demon"}))
     PlayersAchievements.print_all_players_stats()
     PlayersAchievements.unique_achievements()
     PlayersAchievements.common_achievements()

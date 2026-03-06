@@ -1,14 +1,15 @@
 import sys
+from typing import Any
 
 
 class Inventory:
     def __init__(self) -> None:
-        self.all_items: dict = convert_tab_to_dict()
+        self.all_items: dict[str, Any] = convert_tab_to_dict()
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (f"{self.all_items}")
 
-    def all_item_calc(self):
+    def all_item_calc(self) -> int:
         res: int = 0
         for key, value in self.all_items.items():
             res = int(value) + res
@@ -21,8 +22,8 @@ class Inventory:
 
     def current_inventory(self) -> None:
         nbr_all_item = self.all_item_calc()
-        value_pourcent: int = 0
-        all_items_sorted: list
+        value_pourcent: float = 0
+        all_items_sorted: list[Any]
         all_items_sorted = sorted(
             self.all_items.items(),
             key=lambda item: item[1],
@@ -44,8 +45,8 @@ class Inventory:
 
     def item_categories(self) -> None:
         print("=== Item Categories ===")
-        moderate: dict = {}
-        scare: dict = {}
+        moderate: dict[str, Any] = {}
+        scare: dict[str, Any] = {}
         for key, value in self.all_items.items():
             if int(value) >= 5:
                 moderate.update({key: value})
@@ -77,9 +78,9 @@ class Inventory:
             print("\nSample lookup - 'sword'in inventory: True")
 
 
-def convert_tab_to_dict():
-    all_items_dict: dict = {}
-    list_brut: list = []
+def convert_tab_to_dict() -> dict[str, Any]:
+    all_items_dict: dict[str, Any] = {}
+    list_brut: list[str] = []
     n = len(sys.argv)
     i: int = 1
     while i < n:

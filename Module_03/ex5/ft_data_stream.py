@@ -159,7 +159,7 @@ def generator_demonstration() -> None:
             print("", end=', ')
         i += 1
 
-    i: int = 0
+    i = 0
 
     print("\nPrime numbers (first 5): ", end='')
     pri: Generator[int, None, None] = prime()
