@@ -1,6 +1,6 @@
 def open_cyber_archives() -> None:
     try:
-        f = open("ancient_fragment.txt", "r")
+        f = open("ancient_frament.txt", "r")
         print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===\n")
         print("Accessing Storage Vault: ancient_fragment.txt")
         print("Connection established...\n")
