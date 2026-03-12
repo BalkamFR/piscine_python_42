@@ -9,7 +9,7 @@ class DataProcessor(ABC):
     @abstractmethod
     def validate(self, data: any) -> bool:
         pass
-
+    
     def format_output(self, result: str) -> str:
         return "Outuput: " + result
 
@@ -113,19 +113,34 @@ class LogProcessor(DataProcessor):
 
 def nexus_data() -> None:
     print("=== CODE NEXUS - DATA PROCESSOR FOUNDATION ===\n")
-    numeric = NumericProcessor()
-    numeric.execut_all([1, 2, 3, 4, 5])
-    print()
-    text = TextProcessor()
-    text.execut_all("Hello Nexus World")
-    print()
     log = LogProcessor()
-    log.execut_all("ERROR: Connection timeout")
+    text = TextProcessor()
+    numerique = NumericProcessor()
+    all_class:list = [numerique, text, log]
+    all_data:list = [[1, 2, 3, 4, 5], "Hello Nexus World", "ERROR: Connection timeout"]
+    i:int = 0
+    while i < len(all_class):
+        all_class[i].execut_all(all_data[i])
+        print()
+        i += 1
 
 
 def polymorphic_data():
-    print("\n=== Polymorphic Processing Demo ===")
-
+    print("=== Polymorphic Processing Demo ===\n")
+    log = LogProcessor()
+    text = TextProcessor()
+    numerique = NumericProcessor()
+    all_class:list = [numerique, text, log]
+    all_data:list = [[1, 2, 3, 4, 5], "Hello Nexus World", "ERROR: Connection timeout"]
+    i:int = 0
+    data_class:str = ""
+    print("Processing multiple data types through same interface...")
+    while i < len(all_class):
+        
+        data_class = all_class[i].process(all_data[i])
+        print(f"Result {i + 1}: {data_class}")
+        i += 1
+    print("\nFoundation systems online. Nexus ready for advanced streams.")
 
 if __name__ == '__main__':
     nexus_data()
