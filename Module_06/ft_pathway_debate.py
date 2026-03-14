@@ -1,0 +1,30 @@
+def absolute_imports() -> None:
+	from alchemy.transmutation.basic import lead_to_gold, stone_to_gem
+	print("Testing Absolute Imports (from basic.py):")
+	print(f"lead_to_gold(): {lead_to_gold()}")
+	print(f"stone_to_gem(): {stone_to_gem()}")
+
+def relative_imports() -> None:
+	from alchemy.transmutation.advanced import philosophers_stone, elixir_of_life
+	print("\nTesting Relative Imports (from advanced.py):")
+	print(f"philosophers_stone(): {philosophers_stone()}")
+	print(f"elixir_of_life(): {elixir_of_life()}")
+
+def testing_package() -> None:
+	import alchemy
+	print("\nTesting Package Access:")
+	print(f"alchemy.transmutation.lead_to_gold(): {alchemy.transmutation.lead_to_gold()}")
+	print(f"alchemy.transmutation.philosophers_stone(): {alchemy.transmutation.philosophers_stone()}")
+
+
+
+def main() -> str:
+	print("\n=== Pathway Debate Mastery ===\n")
+	absolute_imports()
+	relative_imports()
+	testing_package() 
+	print("\nBoth pathways work! Absolute: clear, Relative: concise")
+
+
+if __name__ == "__main__":
+	main() 
