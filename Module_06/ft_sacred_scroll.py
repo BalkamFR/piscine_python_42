@@ -35,7 +35,7 @@ def create_air() -> None:
         print(f"alchemy.elements.create_air(): {fire}")
 
     except Exception:
-        print(f"alchemy.create_air(): AttributeError - not exposed")
+        print("alchemy.create_air(): AttributeError - not exposed")
 
 
 def test_all() -> None:
@@ -46,15 +46,18 @@ def test_all() -> None:
     except BaseException:
         print("alchemy.create_fire(): AttributeError - not exposed")
     try:
+
         print(f"alchemy.create_water(): {alchemy.create_water()}")
     except BaseException:
         print("alchemy.create_water(): AttributeError - not exposed")
     try:
-        print(f"alchemy.create_earth(): {alchemy.create_earth()}")
+        print("alchemy.create_earth(): "
+              f"{alchemy.create_earth()}")  # type: ignore
     except BaseException:
         print("alchemy.create_earth(): AttributeError - not exposed")
     try:
-        print(f"alchemy.create_air(): {alchemy.create_air()}")
+        print("alchemy.create_air(): "
+              f"{alchemy.create_air()}")  # type: ignore
     except BaseException:
         print("alchemy.create_air(): AttributeError - not exposed")
     print("\nPackage metadata:")

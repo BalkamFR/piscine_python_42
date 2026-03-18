@@ -1,8 +1,9 @@
 
 def methode1() -> None:
     import alchemy.elements
-    print(f"\nMethod 1 - Full module import:")
-    print(f"alchemy.elements.create_fire(): {alchemy.elements.create_fire()}")
+    print("\nMethod 1 - Full module import:")
+    print("alchemy.elements.create_fire(): "
+          f"{alchemy.elements.create_fire()}")
 
 
 def methode2() -> None:
@@ -16,13 +17,14 @@ def methode3() -> None:
     print("\nMethod 3 - Aliased import:")
     print(f"heal(): {heal()}")
 
+
 def methode4() -> None:
-	from alchemy.elements import create_fire, create_water
-	from alchemy.potions import strength_potion
-	print("\nMethod 4 - Multiple imports:")
-	print(f"create_earth(): {create_water()}")
-	print(f"create_fire(): {create_fire()}")
-	print(f"strength_potion(): {strength_potion()}")
+    from alchemy.elements import create_fire, create_water
+    from alchemy.potions import strength_potion
+    print("\nMethod 4 - Multiple imports:")
+    print(f"create_earth(): {create_water()}")
+    print(f"create_fire(): {create_fire()}")
+    print(f"strength_potion(): {strength_potion()}")
 
 
 def main() -> None:
