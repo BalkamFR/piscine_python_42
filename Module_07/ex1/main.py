@@ -4,11 +4,14 @@ from ex1.SpellCard import SpellCard
 from ex1.ArtifactCard import ArtifactCard
 from ex1.Deck import Deck
 
+
 def test_deck_builder() -> None:
     deck = Deck()
-    
+
     lightning = SpellCard("Lightning Bolt", 3, Rarity.UNCOMMON, "damage")
-    crystal = ArtifactCard("Mana Crystal", 4, Rarity.RARE, 3, "+1 mana per turn")
+    crystal = ArtifactCard(
+        "Mana Crystal", 4, Rarity.RARE, 3, "+1 mana per turn"
+    )
     dragon = CreatureCard("Fire Dragon", 5, Rarity.LEGENDARY, 7, 5)
 
     print("Building deck with different card types...")
@@ -26,10 +29,12 @@ def test_deck_builder() -> None:
             result = card.play({})
             print(f"Play result: {result}")
 
+
 def main() -> None:
     print("\n=== DataDeck Deck Builder ===\n")
     test_deck_builder()
-    print("\nPolymorphism in action: Same interface, different card behaviors!")
+    print("\nPolymorphism in action: Same interface, different behaviors!")
+
 
 if __name__ == '__main__':
     main()

@@ -5,7 +5,7 @@ from ex4.TournamentPlatform import TournamentPlatform
 
 def show_card_details(card: TournamentCard, card_id: str) -> None:
     print(f"{card.name} (ID: {card_id}):")
-    print(f"- Interfaces: [Card, Combatable, Rankable]")
+    print("- Interfaces: [Card, Combatable, Rankable]")
     print(f"- Rating: {card.rating}")
     print(f"- Record: {card.wins}-{card.losses}")
 
@@ -29,10 +29,14 @@ def main() -> None:
     print(f"Match result: {match}\n")
 
     print("Tournament Leaderboard:")
-    print(f"1. {dragon.name} - Rating: {dragon.calculate_rating()} "
-          f"({dragon.wins}-{dragon.losses})")
-    print(f"2. {wizard.name} - Rating: {wizard.calculate_rating()} "
-          f"({wizard.wins}-{wizard.losses})")
+    print(
+        f"1. {dragon.name} - Rating: {dragon.calculate_rating()} "
+        f"({dragon.wins}-{dragon.losses})"
+    )
+    print(
+        f"2. {wizard.name} - Rating: {wizard.calculate_rating()} "
+        f"({wizard.wins}-{wizard.losses})"
+    )
 
     print("\nPlatform Report:")
     print(platform.generate_tournament_report())
