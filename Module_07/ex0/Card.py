@@ -1,6 +1,12 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 
+class Rarity(str,Enum):
+    COMMON = "Common"
+    UNCOMMON = "Uncommon"
+    RARE = "Rare"
+    EPIC = "Epic"
+    LEGENDARY = "Legendary"
 
 class Card(ABC):
 	def __init__(self, name: str, cost: int, rarity: str):
@@ -16,7 +22,7 @@ class Card(ABC):
 		infos:dict = {
 			'name': self.name,
 			'cost': self.cost,
-			'rarity': self.rarity,
+			'rarity': self.rarity.value,
 			'type': self.type
 			}
 		return infos

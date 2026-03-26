@@ -1,9 +1,9 @@
-from Card import Card 
-from CreatureCard import CreatureCard
+from ex0.Card import Card, Rarity
+from ex0.CreatureCard import CreatureCard
 
 def combat_card() -> None:
-	dragon = CreatureCard("Fire Dragon", 5, "Legendary", 7, 5)
-	goblin = CreatureCard("Goblin Warrior", 3, "Common", 2, 3)
+	dragon = CreatureCard("Fire Dragon", 5, Rarity.LEGENDARY, 7, 5)
+	goblin = CreatureCard("Goblin Warrior", 3, Rarity.COMMON, 2, 3)
 	mana:int = 6
 	print("CreatureCard Info:")
 	print(dragon.get_card_info())
