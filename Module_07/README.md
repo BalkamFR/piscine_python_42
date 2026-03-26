@@ -155,3 +155,9 @@ mypy --strict Module_07
 ---
 
 *Documentation générée avec précision pour les bâtisseurs d'architectures robustes.*
+
+---
+
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:7aa2f7,100:bb9af7&height=120&section=footer" width="100%"/>
+</div>
