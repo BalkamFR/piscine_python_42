@@ -22,7 +22,7 @@ def checking_dependencies() -> None:
 
 def analyzing_matrix_data() -> None:
     print("\nAnalyzing Matrix data...")
-    prix_btc = 0
+    prix_btc:float = 0
     try:
         reponse = requests.get(
             "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT")
