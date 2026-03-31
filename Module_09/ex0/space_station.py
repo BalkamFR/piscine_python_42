@@ -1,7 +1,7 @@
-from pydantic import BaseModel, model_validator, Field
+from pydantic import BaseModel, Field
 from datetime import datetime
 
-class UserProfile(BaseModel):
+class SpaceStation(BaseModel):
 	station_id: str = Field(min_length=3, max_length=10)
 	name: str = Field(min_length=1, max_length=50)
 	crew_size: int = Field(ge=1 , le=20)
@@ -11,12 +11,11 @@ class UserProfile(BaseModel):
 	is_operational: bool = True
 	notes: str = Field(None, max_length=200)
 
-
 def main() -> None:
 	print("Space Station Data Validation")
 	print("========================================")
 	try:
-		user = UserProfile(
+		space_station = SpaceStation(
 				station_id="ISS001", 
 				name="International Space Station", 
 				crew_size=6, 
@@ -25,22 +24,21 @@ def main() -> None:
 				last_maintenance = "2024-03-29T12:00:00"
 			)
 		print("Valid station created:")
-		print(f"ID: {user.station_id}")
-		print(f"Name: {user.name}")
-		print(f"Crew: {user.crew_size} people")
-		print(f"Power: {user.power_level}%")
-		print(f"Oxygen: {user.oxygen_level}%")
-		if user.is_operational == True:
+		print(f"ID: {space_station.station_id}")
+		print(f"Name: {space_station.name}")
+		print(f"Crew: {space_station.crew_size} people")
+		print(f"Power: {space_station.power_level}%")
+		print(f"Oxygen: {space_station.oxygen_level}%")
+		if space_station.is_operational == True:
 			print("Status: Operational")
 		else:
 			print("Status: Not Operational")
-
 	except Exception as e:
-		print(e)
-	print("========================================")
+		print(e.errors()[0]['msg'])
+	print("\n========================================")
 	print("Expected validation error:")
 	try:
-		user = UserProfile(
+		space_station = SpaceStation(
 				station_id="ISS001", 
 				name="International Space Station", 
 				crew_size=21, 
@@ -49,16 +47,15 @@ def main() -> None:
 				last_maintenance = "2024-03-29T12:00:00"
 			)
 		print("Valid station created:")
-		print(f"ID: {user.station_id}")
-		print(f"Name: {user.name}")
-		print(f"Crew: {user.crew_size} people")
-		print(f"Power: {user.power_level}%")
-		print(f"Oxygen: {user.oxygen_level}%")
-		if user.is_operational == True:
+		print(f"ID: {space_station.station_id}")
+		print(f"Name: {space_station.name}")
+		print(f"Crew: {space_station.crew_size} people")
+		print(f"Power: {space_station.power_level}%")
+		print(f"Oxygen: {space_station.oxygen_level}%")
+		if space_station.is_operational == True:
 			print("Status: Operational")
 		else:
 			print("Status: Not Operational")
-
 	except Exception as e:
 		print(e.errors()[0]['msg'])
 
