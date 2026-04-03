@@ -1,5 +1,6 @@
 from collections.abc import Callable
 
+
 def mage_counter() -> Callable:
     count: int = 0
 
