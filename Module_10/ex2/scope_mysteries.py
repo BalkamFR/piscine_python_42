@@ -1,7 +1,8 @@
 from collections.abc import Callable
+from typing import Any
 
 
-def mage_counter() -> Callable:
+def mage_counter() -> Callable[[], int]:
     count: int = 0
 
     def counter() -> int:
@@ -11,26 +12,26 @@ def mage_counter() -> Callable:
     return counter
 
 
-def spell_accumulator(initial_power: int) -> Callable:
+def spell_accumulator(initial_power: int) -> Callable[[int], int]:
     total: int = initial_power
 
-    def accumulator(add) -> int:
+    def accumulator(add: int) -> int:
         nonlocal total
         total = total + add
         return total
     return accumulator
 
 
-def enchantment_factory(enchantment_type: str) -> Callable:
+def enchantment_factory(enchantment_type: str) -> Callable[[str], str]:
     def enchant(target: str) -> str:
         return f"{enchantment_type} {target}"
     return enchant
 
 
-def memory_vault() -> dict[str, Callable]:
-    storage: dict[str, any] = {}
+def memory_vault() -> dict[str, Callable[..., Any]]:
+    storage: dict[str, Any] = {}
 
-    def store_value(key: str, value: any) -> None:
+    def store_value(key: str, value: Any) -> None:
         print(f"Store '{key}' = {value}")
         storage[key] = value
 
@@ -39,6 +40,7 @@ def memory_vault() -> dict[str, Callable]:
             print(f"Recall '{key}': {storage[key]}")
         else:
             print(f"Recall '{key}': Memory not found")
+
     return {"store": store_value, "retrieve": recall_value}
 
 

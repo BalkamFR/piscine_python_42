@@ -26,7 +26,9 @@ def base_enchantment(power: int, element: str, target: str) -> str:
     return f"Power {power}, Element: {element}, Target: {target}"
 
 
-def partial_enchanter(base_func: Callable) -> dict[str, Callable]:
+def partial_enchanter(
+    base_func: Callable[..., str]
+) -> dict[str, Callable[..., str]]:
     return {
         "Fire": partial(base_func, power=50, element="Fire"),
         "Ice": partial(base_func, power=50, element="Ice"),
@@ -55,8 +57,9 @@ def spell_dispatcher() -> Callable[[Any], str]:
         return (f"Enchantment: {arg}")
 
     @dispatcher.register(list)
-    def _(arg: list) -> str:
+    def _(arg: list[Any]) -> str:
         return (f"Multi-cast: {len(arg)} spells")
+
     return dispatcher
 
 
